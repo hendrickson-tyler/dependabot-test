@@ -1,0 +1,21 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates
+
+# For documentation on the Azure DevOps extension, see:
+# https://github.com/tinglesoftware/dependabot-azure-devops/blob/main/extension/README.md#usage
+
+version: 2
+updates:
+
+  # Front-end dependencies.
+  - package-ecosystem: 'npm'
+    directory: '/'
+    target-branch: 'env/dev'
+    open-pull-requests-limit: 0 # Only opens PRs for vulnerabilities.
+
+    # NOTE: The schedule here is overridden by the schedule in dependabot-pipeline.yml. Dependabot still requires
+    # a schedule to be specified here, but it does nothing.
+    schedule:
+      interval: 'daily'
