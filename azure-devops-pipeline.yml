@@ -1,0 +1,20 @@
+name: Dependabot
+trigger: none # Disable CI trigger.
+
+schedules:
+- cron: '0 5 * * 1-5' # Run at 10:00 PM MST every weekday.
+  always: true # Run even when there are no code changes.
+  branches:
+    include:
+      - env/dev
+  batch: true
+
+pool:
+  vmImage: 'ubuntu-latest' # Requires macOS or Ubuntu (Windows is not supported).
+
+steps:
+- task: dependabot@1
+  displayName: 'Check for vulnerabilities'
+  inputs:
+    gitHubAccessToken: $(GITHUB_ACCESS_TOKEN) # Required for Dependabot to open vulnerability PRs.
+    azureDevOpsAccessToken: $(AZURE_DEVOPS_ACCESS_TOKEN) # Required for Dependabot to open PRs in Azure DevOps.
